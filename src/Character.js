@@ -1,4 +1,7 @@
 class Character {
+
+
+
     constructor(x, y, width, height, direction, img) {
         this.x = x;
         this.y = y;
@@ -8,7 +11,7 @@ class Character {
         this.velX = 0;
         this.img = img;
         this.inScene = true;
-        console.log(width);
+        this.stopMov = false;
     }
 
     setVelX(velX) {
@@ -21,30 +24,12 @@ class Character {
     getX() {
         return this.x
     }
+    
     draw(ctx) {
         this.width = this.img.width;
         this.height = this.img.height;
         ctx.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
     }
-
-    update() {
-        this.moveX();
-        if (this.direction === -1) {
-            if (this.x <= -this.width) {
-                this.inScene = false
-            } else {
-                this.inScene = true
-            }
-        }else{
-            if (this.x >= this.width*3) {
-                this.inScene = false
-            } else {
-                this.inScene = true
-            }
-        }
-    }
-
-
 
 }
 

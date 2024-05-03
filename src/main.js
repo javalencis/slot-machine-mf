@@ -1,8 +1,7 @@
-import { Character } from "./Character.js"
 import { CharacterBot } from "./CharacterBot.js"
 import { CharacterMid } from "./CharacterMid.js"
 import { CharacterTop } from "./CharacterTop.js"
-import { positions } from "./positions.js"
+
 
 const canvas = document.getElementById('myCanvas')
 const ctx = canvas.getContext('2d')
@@ -12,6 +11,10 @@ const order = ['donald', 'mickey', 'minnie', 'pluto']
 const orderMid = [ 'pluto', 'donald', 'mickey', 'minnie']
 const btStart = document.querySelector('.bt-start')
 const btStop = document.querySelector('.bt-stop')
+
+const bgCanvas =  new Image()
+bgCanvas.src = '../assets/bgcontainer.png'
+
 
 let pairedPjs = []
 
@@ -37,6 +40,8 @@ function start() {
     pjsBot.forEach(pj => pj.setVelX(16))
     stateGames.start = false;
     stateGames.play = true;
+    btStop.style.display = 'block'
+    btStart.style.display = 'none'
 }
 
 function stop() {
@@ -156,13 +161,16 @@ function manageStatesGame() {
         }
     }
 }
-
+function drawBg(){
+    ctx.drawImage(bgCanvas, 0, 0,canvas.width,canvas.height);
+}
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     pjsTop.forEach(pj => pj.draw(ctx))
     pjsMid.forEach(pj => pj.draw(ctx))
     pjsBot.forEach(pj => pj.draw(ctx))
+    drawBg()
 }
 
 function update() {

@@ -9,7 +9,7 @@ class CharacterTop extends Character{
             if (Math.abs(this.velX) <= 2){
                 
                 this.timeInterval = 100;
-                if (this.x <= 1 && this.x>=0) {
+                if (this.x <= 1 && this.x>=-1) {
                     CharacterTop.stopMoveTop = true;
                     clearInterval(interval);
                 }

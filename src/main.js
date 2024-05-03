@@ -8,8 +8,8 @@ const canvas = document.getElementById('myCanvas')
 const ctx = canvas.getContext('2d')
 
 
-const order = ['hongo', 'estrella', 'hongo', 'flor', 'hoja']
-const orderMid = ['flor', 'hoja', 'hongo', 'estrella', 'hongo']
+const order = ['donald', 'mickey', 'minnie', 'pluto']
+const orderMid = [ 'pluto', 'donald', 'mickey', 'minnie']
 const btStart = document.querySelector('.bt-start')
 const btStop = document.querySelector('.bt-stop')
 
@@ -62,32 +62,32 @@ function stop() {
 
 
 function createPjs() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
         const imgObj = new Image();
         imgObj.src = 'https://www.tiendamic.com/gamification/little/game-mickey-and-friends/assets/' + order[i] + 'top.png'
         pjsTop[i] = (new CharacterTop(i * 320, 0, imgObj.width, imgObj.height, -1, imgObj))
     }
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
         const imgObj = new Image();
         imgObj.src = 'https://www.tiendamic.com/gamification/little/game-mickey-and-friends/assets/' + orderMid[i] + 'mid.png'
-        pjsMid[i] = (new CharacterMid((i * 320) - 640, 107, imgObj.width, imgObj.height, 1, imgObj))
+        pjsMid[i] = (new CharacterMid((i * 320) - 320, 107, imgObj.width, imgObj.height, 1, imgObj))
     }
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
         const imgObj = new Image();
         imgObj.src = 'https://www.tiendamic.com/gamification/little/game-mickey-and-friends/assets/' + order[i] + 'bot.png'
-        pjsBot[i] = (new CharacterBot(i * 320, 255, imgObj.width, imgObj.height, -1, imgObj))
+        pjsBot[i] = (new CharacterBot(i * 320, 214, imgObj.width, imgObj.height, -1, imgObj))
     }
 }
 
 function indexLeft(i) {
     if (i === 0) {
-        return 4
+        return 3
     } else {
         return i - 1
     }
 }
 function indexRight(i) {
-    if (i === 4) {
+    if (i === 3) {
         return 0
     } else {
         return i + 1
@@ -95,7 +95,7 @@ function indexRight(i) {
 }
 
 function rePosition() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
         if (!pjsTop[i].inScene) {
             pjsTop[i].x = pjsTop[indexLeft(i)].x + pjsTop[indexLeft(i)].width
         }
@@ -124,10 +124,38 @@ function paired(index, list) {
 function checkPairing(listPjs, listOrder) {
     listPjs.map((pj, index) => (
         (pj.x >= -2 && pj.x <= 2) && (
-            paired(index +1, listOrder)
+            paired(index + 1, listOrder)
         )))
 }
 
+function manageStatesGame() {
+    if (stateGames.start) {
+        createPjs();
+    }
+
+    rePosition();
+    if (stateGames.stopTop) {
+        if (CharacterTop.stopMoveTop) {
+            checkPairing(pjsTop, order)
+            stateGames.stopTop = false;
+
+        }
+    }
+    if (stateGames.stopMid) {
+        if (CharacterMid.stopMoveMid) {
+            checkPairing(pjsMid, orderMid)
+            stateGames.stopMid = false;
+
+
+        }
+    }
+    if (stateGames.stopBot) {
+        if (CharacterBot.stopMoveBot) {
+            checkPairing(pjsBot, order)
+            stateGames.stopBot = false;
+        }
+    }
+}
 
 
 function draw() {
@@ -138,38 +166,10 @@ function draw() {
 }
 
 function update() {
-
-
-
-    if (stateGames.start) {
-        createPjs();
-    }
+    manageStatesGame()
     pjsTop.forEach(pj => pj.update())
     pjsMid.forEach(pj => pj.update())
     pjsBot.forEach(pj => pj.update())
-    rePosition();
-    if (stateGames.stopTop) {
-        if (CharacterTop.stopMoveTop) {
-            checkPairing(pjsTop, order)
-            stateGames.stopTop = false;
-            console.log(pairedPjs);
-        }
-    }
-    if (stateGames.stopMid) {
-        if (CharacterMid.stopMoveMid) {
-            checkPairing(pjsMid, orderMid)
-            stateGames.stopMid = false;
-            console.log(pairedPjs);
-
-        }
-    }
-    if (stateGames.stopBot) {
-        if (CharacterBot.stopMoveBot) {
-            checkPairing(pjsBot, order)
-            stateGames.stopBot = false;
-            console.log(pairedPjs);
-        }
-    }
 }
 
 

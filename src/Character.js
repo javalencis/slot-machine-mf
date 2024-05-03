@@ -12,6 +12,7 @@ class Character {
         this.img = img;
         this.inScene = true;
         this.stopMov = false;
+        this.timeInterval = 10
     }
 
     setVelX(velX) {

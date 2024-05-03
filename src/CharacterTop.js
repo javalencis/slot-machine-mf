@@ -2,6 +2,7 @@ import { Character } from "./Character.js";
 
 class CharacterTop extends Character{
     static stopMoveTop = false
+
     stop() {
 
         let interval = setInterval(() => {
@@ -14,9 +15,9 @@ class CharacterTop extends Character{
                 }
             } else {
                 if (this.direction > 0) {
-                    this.velX -= 0.02;
+                    this.velX -= 0.04;
                 } else {
-                    this.velX += 0.02;
+                    this.velX += 0.04;
                 }
             }
         }, this.timeInterval);

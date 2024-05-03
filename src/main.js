@@ -13,6 +13,8 @@ const orderMid = ['flor', 'hoja', 'hongo', 'estrella', 'hongo']
 const btStart = document.querySelector('.bt-start')
 const btStop = document.querySelector('.bt-stop')
 
+let pairedPjs = []
+
 btStart.addEventListener('click', start)
 btStop.addEventListener('click', stop)
 let pjsTop = []
@@ -24,6 +26,8 @@ const stateGames = {
     start: true,
     play: false,
     stopTop: false,
+    stopMid: false,
+    stopBot: false,
 
 }
 
@@ -40,10 +44,12 @@ function stop() {
     switch (attempts) {
         case 1:
             pjsBot.forEach(pj => pj.stop())
+            stateGames.stopBot = true;
             attempts--
             break;
         case 2:
             pjsMid.forEach(pj => pj.stop())
+            stateGames.stopMid = true;
             attempts--
             break;
         case 3:
@@ -102,6 +108,28 @@ function rePosition() {
     }
 }
 
+function paired(index, list) {
+    if (index === 5) {
+        index = 0
+    }
+    if (index === -1) {
+        index = 4
+    }
+    console.log('1');
+    pairedPjs.push(list[index])
+
+
+}
+
+function checkPairing(listPjs, listOrder) {
+    listPjs.map((pj, index) => (
+        (pj.x >= -2 && pj.x <= 2) && (
+            paired(index +1, listOrder)
+        )))
+}
+
+
+
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     pjsTop.forEach(pj => pj.draw(ctx))
@@ -109,30 +137,39 @@ function draw() {
     pjsBot.forEach(pj => pj.draw(ctx))
 }
 
-function checkStop(){
-    // for(let i = 0; i < pjsTop.length ; i++){
-    //     if(pjsTop[i].stopMov){
-    //         pjsTop.forEach(pj1 => pj1.setVelX(0))
-    //         break;
-    //     }
-    // }
-    
-}
-
 function update() {
+
+
 
     if (stateGames.start) {
         createPjs();
-
     }
-    // else if(stateGames.stopTop){
-    //     checkStop()
-    //     stateGames.stopTop = false
-    // }
     pjsTop.forEach(pj => pj.update())
     pjsMid.forEach(pj => pj.update())
     pjsBot.forEach(pj => pj.update())
     rePosition();
+    if (stateGames.stopTop) {
+        if (CharacterTop.stopMoveTop) {
+            checkPairing(pjsTop, order)
+            stateGames.stopTop = false;
+            console.log(pairedPjs);
+        }
+    }
+    if (stateGames.stopMid) {
+        if (CharacterMid.stopMoveMid) {
+            checkPairing(pjsMid, orderMid)
+            stateGames.stopMid = false;
+            console.log(pairedPjs);
+
+        }
+    }
+    if (stateGames.stopBot) {
+        if (CharacterBot.stopMoveBot) {
+            checkPairing(pjsBot, order)
+            stateGames.stopBot = false;
+            console.log(pairedPjs);
+        }
+    }
 }
 
 

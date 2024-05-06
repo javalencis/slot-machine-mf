@@ -16,6 +16,8 @@ body{
     align-items: center;
     flex-direction: column;
     position: relative;
+    font-family: "Lexend", sans-serif;
+    font-weight: 400;
     
 }
 canvas{
@@ -126,7 +128,8 @@ canvas{
     flex-direction: column;
     padding: 20px;
     gap: 10px;
-    font-size: 20px;
+    font-size: 24px;
+    text-align: center;
 }
 .content-cupon{
     border: 1px solid black;

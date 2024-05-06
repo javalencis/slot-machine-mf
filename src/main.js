@@ -15,20 +15,25 @@ const btStop = document.querySelector('.bt-stop')
 const contModal = document.querySelector('.container-modal')
 const contentMsn = document.querySelector('.content-msn')
 const contentCupon = document.querySelector('.content-cupon')
+const contentBt = document.querySelector('.content-bt')
+
+
 const bgCanvas = new Image()
 bgCanvas.src = '../assets/bgcontainer.png'
 
 
-let pairedPjs = []
 
 btStart.addEventListener('click', start)
 btStop.addEventListener('click', stop)
+contentBt.addEventListener('click', again)
+
+let pairedPjs = []
 let pjsTop = []
 let pjsMid = []
 let pjsBot = []
 let attempts = 3
 
-const stateGames = {
+let stateGames = {
     start: true,
     play: false,
     stopTop: false,
@@ -66,6 +71,29 @@ function stop() {
             attempts--
             break;
     }
+}
+
+function again() {
+    pairedPjs = []
+    pjsTop = []
+    pjsMid = []
+    pjsBot = []
+    attempts = 3
+
+    stateGames = {
+        start: true,
+        play: false,
+        stopTop: false,
+        stopMid: false,
+        stopBot: false,
+        end: false
+    }
+    CharacterTop.stopMoveTop = false
+    CharacterMid.stopMoveMid = false
+    CharacterBot.stopMoveBot = false
+    contModal.style.display = "none"
+    btStop.style.display = "none"
+    btStart.style.display = "block"
 }
 
 
@@ -123,7 +151,7 @@ function paired(index, list) {
     if (index === -1) {
         index = 3
     }
-    console.log('1');
+
     pairedPjs.push(list[index])
 
 
@@ -177,13 +205,13 @@ function manageStatesGame() {
             setTimeout(() => {
 
                 stateGames.end = true;
-            }, 1500);
+            }, 1000);
         }
     }
 
     if (stateGames.end) {
         contModal.style.display = 'flex'
-    
+
         if (isEqual()) {
             if (pairedPjs[0] === 'mickey') {
                 contentMsn.innerHTML = msn.mickey.mensaje
@@ -196,11 +224,11 @@ function manageStatesGame() {
                 contentCupon.innerHTML = msn.donald.cupon
             } else {
                 contentMsn.innerHTML = msn.pluto.mensaje
-                contentCupon.style.display='none'
+                contentCupon.style.display = 'none'
             }
         } else {
             contentMsn.innerHTML = msn.nothing.mensaje
-            contentCupon.style.display='none'
+            contentCupon.style.display = 'none'
         }
     }
 }

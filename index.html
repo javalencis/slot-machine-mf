@@ -1,33 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Tragamonedas</title>
-</head>
-<body>
-    <div class="bg_screen">
-        <img src="./assets/bggame.png" alt="">
-
-    </div>
-    <div class="containerCanvas">
-
-        <canvas id="myCanvas"  width="960px" height="330px"></canvas>
-    </div>
-    <div class="container">
-        <img src="../assets/containerscore.png" alt="">
-        <div class="container-bt">
-            <img  class="bt-start" src="./assets/btstart.gif" alt="">
-            <!-- <button class="bt-start">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <title>Tragamonedas</title>
+    </head>
+    <body>
+        <div class="bg_screen">
+            <img src="./assets/bggame.png" alt="" />
+        </div>
+        <div class="containerCanvas">
+            <canvas id="myCanvas" width="960px" height="330px"></canvas>
+        </div>
+        <div class="container">
+            <img src="../assets/containerscore.png" alt="" />
+            <div class="container-bt">
+                <img class="bt-start" src="./assets/btstart.gif" alt="" />
+                <!-- <button class="bt-start">
                 Jugar
             </button> -->
-            <img  class="bt-stop" src="./assets/btstop.png" alt="">
-            <!-- <button class="bt-stop">
+                <img class="bt-stop" src="./assets/btstop.png" alt="" />
+                <!-- <button class="bt-stop">
                 Detener
             </button> -->
+            </div>
         </div>
-    </div>
-    <script type="module" src="src/main.js"></script>
-</body>
+        <div class="container-modal">
+            <div class="modal-bg">
+                <img src="./assets/bgmodal.png" alt="" />
+                <div class="modal-content">
+                    <p class="content-msn">
+                        ¡Meeska, Mooska! Con Mickey ganas un 10% EXTRA en tu compra usando el cupón:
+                    </p>
+                    <p class="content-cupon">
+                        10MOUSE
+                    </p>
+    
+                    <button class="content-bt">Volver a Jugar</button>
+                </div>
+            </div>
+           
+        </div>
+        <script type="module" src="src/main.js"></script>
+    </body>
 </html>

@@ -15,9 +15,9 @@ class CharacterTop extends Character{
                 }
             } else {
                 if (this.direction > 0) {
-                    this.velX -= 0.04;
+                    this.velX -= 0.1;
                 } else {
-                    this.velX += 0.04;
+                    this.velX += 0.1;
                 }
             }
         }, this.timeInterval);

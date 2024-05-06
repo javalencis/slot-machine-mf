@@ -1,3 +1,8 @@
+:root{
+    --transition: all 0.7s ease 0s;
+    --animation: element 150s linear infinite 0s;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -37,6 +42,24 @@ canvas{
     object-position: center;
 
 }
+.containerCanvas{
+    animation: var(--animation);
+    background: url(./assets/bggamep.gif);
+    background-size: 500px 500px;
+    height: 330px;
+    width: 960px;
+    z-index: 1;
+    border-radius: 20px;
+
+}
+@keyframes element{
+    from{
+        background-position: 0px 0px;
+    }
+    to{
+        background-position: 960px 400px;
+    }
+}
 .container{
     width: 960px;
 
@@ -65,5 +88,8 @@ canvas{
 
 .bt-stop{
     display: none;
+    cursor: pointer;
+}
+.bt-start{
     cursor: pointer;
 }

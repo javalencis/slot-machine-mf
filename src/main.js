@@ -35,9 +35,9 @@ const stateGames = {
 }
 
 function start() {
-    pjsTop.forEach(pj => pj.setVelX(14))
-    pjsMid.forEach(pj => pj.setVelX(18))
-    pjsBot.forEach(pj => pj.setVelX(16))
+    pjsTop.forEach(pj => pj.setVelX(10))
+    pjsMid.forEach(pj => pj.setVelX(12))
+    pjsBot.forEach(pj => pj.setVelX(8))
     stateGames.start = false;
     stateGames.play = true;
     btStop.style.display = 'block'
@@ -69,17 +69,17 @@ function stop() {
 function createPjs() {
     for (let i = 0; i < 4; i++) {
         const imgObj = new Image();
-        imgObj.src = 'https://www.tiendamic.com/gamification/little/game-mickey-and-friends/assets/' + order[i] + 'top.png'
+        imgObj.src = '../assets/' + order[i] + 'top.png'
         pjsTop[i] = (new CharacterTop(i * 320, 0, imgObj.width, imgObj.height, -1, imgObj))
     }
     for (let i = 0; i < 4; i++) {
         const imgObj = new Image();
-        imgObj.src = 'https://www.tiendamic.com/gamification/little/game-mickey-and-friends/assets/' + orderMid[i] + 'mid.png'
+        imgObj.src = '../assets/' + orderMid[i] + 'mid.png'
         pjsMid[i] = (new CharacterMid((i * 320) - 320, 107, imgObj.width, imgObj.height, 1, imgObj))
     }
     for (let i = 0; i < 4; i++) {
         const imgObj = new Image();
-        imgObj.src = 'https://www.tiendamic.com/gamification/little/game-mickey-and-friends/assets/' + order[i] + 'bot.png'
+        imgObj.src = '../assets/' + order[i] + 'bot.png'
         pjsBot[i] = (new CharacterBot(i * 320, 214, imgObj.width, imgObj.height, -1, imgObj))
     }
 }

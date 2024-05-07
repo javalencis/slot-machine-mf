@@ -96,6 +96,7 @@ function again() {
     contModal.style.display = "none"
     btStop.style.display = "none"
     btStart.style.display = "block"
+    contentCupon.style.display="flex"
 }
 
 
@@ -204,9 +205,10 @@ function manageStatesGame() {
         if (CharacterBot.stopMoveBot) {
             checkPairing(pjsBot, order)
             stateGames.stopBot = false;
-            setTimeout(() => {
+            let time = setTimeout(() => {
 
                 stateGames.end = true;
+                clearTimeout(time)
             }, 1000);
         }
     }
@@ -232,6 +234,7 @@ function manageStatesGame() {
             contentMsn.innerHTML = msn.nothing.mensaje
             contentCupon.style.display = 'none'
         }
+        stateGames.end = false
     }
 }
 

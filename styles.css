@@ -21,8 +21,8 @@ body{
     
 }
 canvas{
-
-    width: 960px;
+    width:100%;
+    max-width: 960px;
 
     max-height: 400px;
     z-index: 1;
@@ -150,4 +150,71 @@ canvas{
 .modal-bg img{
 
     height: 100%;
+}
+
+@media (max-width:960px) {
+    .containerCanvas{
+        width: 100%;
+        height: 100%;
+
+    }
+    canvas{
+        width: 100%;
+
+    }
+
+    .container{
+        width: 100%;
+
+    }
+
+    .container-modal{
+        width: 100%;
+    }
+
+    .container-modal .modal-content{
+    
+        right: 0;
+        left: 0;
+        font-size: 18px;
+        gap: 0; 
+        text-align: center;
+        justify-content: space-around;
+    }
+    .content-cupon{
+      
+        padding: 10px 20px;
+        margin-top: 10px;
+
+    }
+    .content-bt{
+        width: 80%;
+        padding: 10px 10px;
+
+        font-size: 14px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width:600px) {
+
+    .content-msn{
+        font-size: 14px
+    }
+    .content-cupon{
+        font-size: 14px;
+    }
+}
+
+@media (max-width:500px) {
+
+    .content-msn{
+        font-size: 12px
+    }
+    .content-cupon{
+        font-size: 12px;
+    }
+    .content-bt{
+        font-size: 10px;
+    }
 }

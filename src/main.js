@@ -19,7 +19,7 @@ const contentBt = document.querySelector('.content-bt')
 
 
 const bgCanvas = new Image()
-bgCanvas.src = '../assets/bgcontainer.png'
+bgCanvas.src = 'https://tiendamic.com/gamification/little/game-mickey-and-friends/assets/bgcontainer.png'
 
 
 
@@ -100,17 +100,17 @@ function again() {
 function createPjs() {
     for (let i = 0; i < 4; i++) {
         const imgObj = new Image();
-        imgObj.src = '../assets/' + order[i] + 'top.png'
+        imgObj.src = 'https://tiendamic.com/gamification/little/game-mickey-and-friends/assets/' + order[i] + 'top.png'
         pjsTop[i] = (new CharacterTop(i * 320, 0, imgObj.width, imgObj.height, -1, imgObj))
     }
     for (let i = 0; i < 4; i++) {
         const imgObj = new Image();
-        imgObj.src = '../assets/' + orderMid[i] + 'mid.png'
+        imgObj.src = 'https://tiendamic.com/gamification/little/game-mickey-and-friends/assets/' + orderMid[i] + 'mid.png'
         pjsMid[i] = (new CharacterMid((i * 320) - 320, 107, imgObj.width, imgObj.height, 1, imgObj))
     }
     for (let i = 0; i < 4; i++) {
         const imgObj = new Image();
-        imgObj.src = '../assets/' + order[i] + 'bot.png'
+        imgObj.src = 'https://tiendamic.com/gamification/little/game-mickey-and-friends/assets/' + order[i] + 'bot.png'
         pjsBot[i] = (new CharacterBot(i * 320, 214, imgObj.width, imgObj.height, -1, imgObj))
     }
 }

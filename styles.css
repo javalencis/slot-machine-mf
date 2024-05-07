@@ -18,6 +18,7 @@ body{
     position: relative;
     font-family: "Lexend", sans-serif;
     font-weight: 400;
+    padding: 10px 0;
     
 }
 canvas{
@@ -43,6 +44,9 @@ canvas{
     object-fit: cover;
     object-position: center;
 
+}
+.logo{
+    z-index: 1;
 }
 .containerCanvas{
     animation: var(--animation);

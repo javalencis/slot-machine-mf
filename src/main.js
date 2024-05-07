@@ -16,6 +16,8 @@ const contModal = document.querySelector('.container-modal')
 const contentMsn = document.querySelector('.content-msn')
 const contentCupon = document.querySelector('.content-cupon')
 const contentBt = document.querySelector('.content-bt')
+const cupon = document.querySelector('.cupon')
+const pCheck = document.querySelector('.pCheck')
 
 
 const bgCanvas = new Image()
@@ -26,7 +28,7 @@ bgCanvas.src = 'https://tiendamic.com/gamification/little/game-mickey-and-friend
 btStart.addEventListener('click', start)
 btStop.addEventListener('click', stop)
 contentBt.addEventListener('click', again)
-
+contentCupon.addEventListener('click', copy)
 let pairedPjs = []
 let pjsTop = []
 let pjsMid = []
@@ -215,13 +217,13 @@ function manageStatesGame() {
         if (isEqual()) {
             if (pairedPjs[0] === 'mickey') {
                 contentMsn.innerHTML = msn.mickey.mensaje
-                contentCupon.innerHTML = msn.mickey.cupon
+                cupon.innerHTML = msn.mickey.cupon
             } else if (pairedPjs[0] === 'minnie') {
                 contentMsn.innerHTML = msn.minnie.mensaje
-                contentCupon.innerHTML = msn.minnie.cupon
+                cupon.innerHTML = msn.minnie.cupon
             } else if (pairedPjs[0] === 'donald') {
                 contentMsn.innerHTML = msn.donald.mensaje
-                contentCupon.innerHTML = msn.donald.cupon
+                cupon.innerHTML = msn.donald.cupon
             } else {
                 contentMsn.innerHTML = msn.pluto.mensaje
                 contentCupon.style.display = 'none'
@@ -231,6 +233,19 @@ function manageStatesGame() {
             contentCupon.style.display = 'none'
         }
     }
+}
+
+function copy() {
+    let text = cupon.innerHTML;
+
+
+    const tempInput = document.createElement('input');
+    tempInput.setAttribute("value", text);
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    pCheck.style.display = 'block'
 }
 
 function drawBg() {

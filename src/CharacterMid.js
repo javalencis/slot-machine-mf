@@ -8,7 +8,7 @@ class CharacterMid extends Character{
             if (Math.abs(this.velX) <= 2){
                 
                 this.timeInterval = 100;
-                if (this.x <=  this.width * 2  && this.x>= this.width * 2 -1) {
+                if (this.x <=  this.width * 2 +2 && this.x>= this.width * 2 -2) {
                     CharacterMid.stopMoveMid = true;
                     clearInterval(interval);
                 }

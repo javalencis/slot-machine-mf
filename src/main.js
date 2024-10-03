@@ -97,6 +97,7 @@ function again() {
     btStop.style.display = "none"
     btStart.style.display = "block"
     contentCupon.style.display="flex"
+    pCheck.style.display = 'none'
 }
 
 
@@ -162,7 +163,7 @@ function paired(index, list) {
 
 function checkPairing(listPjs, listOrder) {
     listPjs.map((pj, index) => (
-        (pj.x >= -2 && pj.x <= 2) && (
+        (pj.x >= -20 && pj.x <= 20) && (
             paired(index + 1, listOrder)
         )))
 }
